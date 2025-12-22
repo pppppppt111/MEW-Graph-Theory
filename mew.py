@@ -15,9 +15,29 @@ class MEW:
         return matrix
 
     def _get_move(self,byte_val):
-        pass
-    def _move(self):
-        pass
+        """Determine the direction and movement from a byte value.
+        Directions:
+        00: Down
+        11: Up
+        01: Right
+        10: Left
+
+        """
+        direction = byte_val & 0b11  # Last 2 bits
+        movement = byte_val >> 2      # Remaining bits
+        return direction, movement
+    def _move(self, row, col, direction, movement):
+        """Move in the matrix based on direction and movement."""
+        if direction == 0b00:  # Down
+            row = (row + movement) % self.key_size
+        elif direction == 0b11:  # Up
+            row = (row - movement) % self.key_size
+        elif direction == 0b01:  # Right
+            col = (col + movement) % self.key_size
+        elif direction == 0b10:  # Left
+            col = (col - movement) % self.key_size
+        return row, col
+        
     def _unmove(self):
         pass
     def _pass_encrypt(self)
