@@ -82,7 +82,24 @@ class MEW:
         return bytearray(reversed(plaintext_reversed))
 
     def encrypt(self):
-        pass
+        if isinstance(plaintext_str, str):
+            data = plaintext_str.encode('utf_8')
+        else:
+            data = plaintext_str
+        
+        pass1_out, row, col = self._pass_encrypt(data, 0, 0)
+
+        pass1_out.append(row)
+        pass1_out.append(col)
+        pass1_reversed = pass1_out[::-1]
+        
+        pass2_out, final_row, final_col = self._pass_encrypt(pass1_reversed, 0, 0)
+
+        pass2_out.append(final_row)
+        pass2_out.append(final_c0l)
+
+        return bytes(pass2_out)
+        
     def decrypt(self):
         pass
         
