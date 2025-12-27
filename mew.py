@@ -100,6 +100,21 @@ class MEW:
 
         return bytes(pass2_out)
         
-    def decrypt(self):
-        pass
+    def decrypt(self, ciphertext_bytes):
+        
+        final_col = ciphertext_bytes[-1]
+        final_row = ciphertext_bytes[-2]
+        data = ciphertext_bytes[:-2]
+        pass2_decrypted = self._pass_decrypt(data, final_row, final_col)
+
+        pass1_out_full = pass2_decrypted[::-1]
+
+        pass1_col = pass1_out_full[-1]
+        pass1_row = pass1_out_full[-2]
+        pass1_data = pass1_out_full[:-2]
+
+        plaintext = self._pass_decrypt(pass1_data, pass1_row, pass1_col)
+
+        return bytes(plaintext)
+        
         
