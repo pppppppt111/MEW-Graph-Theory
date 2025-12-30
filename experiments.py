@@ -20,3 +20,21 @@ Loop over key sizes and plaintexts.
 For each, generate random keys, encrypt, decrypt, and record results.
 Print or save results in a table or CSV for analysis.
 """
+import secrets
+#Execution Time
+# For each key size and data length combination:
+# - Run 1000 iterations
+# - Measure encryption time
+# - Measure decryption time
+# - Calculate mean value
+
+iterations = 1000
+
+for key_size in [8, 16, 32, 64, 128, 256]:
+    for data_length in [1024, 2048, 4096, 8192, 16384]:
+        # Generate random plaintext
+        plaintext = secrets.token_bytes(data_length)
+        
+        # Time encryption (1000 iterations)
+        # Time decryption (1000 iterations)
+        # Record results
