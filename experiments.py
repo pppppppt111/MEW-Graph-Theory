@@ -38,3 +38,16 @@ for key_size in [8, 16, 32, 64, 128, 256]:
         # Time encryption (1000 iterations)
         # Time decryption (1000 iterations)
         # Record results
+
+
+# Key Generation Time
+# For each key size:
+# - Run 5000 iterations
+# - Measure time to generate both key matrices
+# - Calculate mean value
+
+iterations = 5000
+for key_size in [8, 16, 32, 64, 128, 256]:
+    # Time key generation (5000 iterations)
+    # Record results
+    pass
