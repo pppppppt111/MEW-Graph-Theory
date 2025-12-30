@@ -115,3 +115,21 @@ for key_size in [64, 128, 256]:
         changed_bits = count_different_bits(ciphertext1, ciphertext2)
         total_bits = len(ciphertext1) * 8
         avalanche_percentage = (changed_bits / total_bits) * 100
+
+
+        #Shannon Entropy
+        # Test with:
+# 1. English language text (115 characters)
+# 2. Two random plaintexts (115 bytes each)
+
+test_cases = [
+    "It is a truth universally acknowledged that a single man in possession of a good fortune must be in want of a wife.",
+    secrets.token_bytes(115),  # Random 1
+    secrets.token_bytes(115)   # Random 2
+]
+
+for plaintext in test_cases:
+    ciphertext = mew.encrypt(plaintext)
+    actual_entropy = calculate_shannon_entropy(ciphertext)
+    ideal_entropy = calculate_ideal_entropy(len(ciphertext))
+    # Record both values
