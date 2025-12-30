@@ -133,3 +133,15 @@ for plaintext in test_cases:
     actual_entropy = calculate_shannon_entropy(ciphertext)
     ideal_entropy = calculate_ideal_entropy(len(ciphertext))
     # Record both values
+
+
+#Frequency Analysis
+# Use English language plaintext
+plaintext = "It is a truth universally acknowledged..."
+
+# Encrypt with 32×32 key matrices
+mew = MEW(key_size=32)
+ciphertext = mew.encrypt(plaintext)
+
+# Analyze character frequency in ciphertext
+# Compare with standard English letter frequencies
